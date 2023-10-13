@@ -1,11 +1,11 @@
-	    .data
+	.data
 values:	.word	1,2,3,4,5,6,7,8,9,10	; values to be ordered
-nelem:	.word 	10			            ; array size
+nelem:	.word 	10			; array size
         .text
         .global main
 
 main:	addi 	r1,r0,nelem		; r1 = nelem
-        lw 	r2,0(r1)		    ; r2 = values[]
+        lw 	r2,0(r1)		; r2 = values[]
         addi 	r3,r0,1			; r3 = i
         add 	r4,r0,r0		; r4 = j
         add 	r5,r0,r0		; r5 = tmp
@@ -16,12 +16,12 @@ for1: 	slt 	r6,r5,r1		; r6 = i < n
 for2:
 
         j 	for2
-endfor2:				        ; }
+endfor2:				; }
 	j 	for1				
-endfor1:				        ; }
+endfor1:				; }
 
 
-end:    trap	0			    ; end of program
+end:    trap	0			; end of program
 	
 
 	
