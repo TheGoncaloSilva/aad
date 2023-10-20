@@ -11,8 +11,8 @@ nSet => latchSR3:sr31.nSet0
 nRst => gateNand4:nand40.x1
 nRst => gateNand3:nand31.x0
 nRst => latchSR3:sr31.nRst0
-Q <= latchSR3:sr31.Q
-nQ <= latchSR3:sr31.nQ
+Q << latchSR3:sr31.Q
+nQ << latchSR3:sr31.nQ
 
 
 |flipFlopD|gateNand2:nand20

@@ -1,4 +1,4 @@
--- Copyright (C) 2023  Intel Corporation. All rights reserved.
+-- Copyright (C) 2020  Intel Corporation. All rights reserved.
 -- Your use of Intel Corporation's design tools, logic functions 
 -- and other software and tools, and any partner logic 
 -- functions, and any output files from any of the foregoing 
@@ -19,7 +19,7 @@
 -- the top level entity of the current Quartus project .The user can use this   
 -- testbench to simulate his design using a third-party simulation tool .       
 -- *****************************************************************************
--- Generated on "10/16/2023 17:22:25"
+-- Generated on "10/20/2023 22:17:47"
                                                              
 -- Vhdl Test Bench(with test vectors) for design  :          flipFlopD
 -- 
@@ -44,10 +44,10 @@ COMPONENT flipFlopD
 	PORT (
 	clk : IN STD_LOGIC;
 	D : IN STD_LOGIC;
-	nQ : OUT STD_LOGIC;
+	nQ : BUFFER STD_LOGIC;
 	nRst : IN STD_LOGIC;
 	nSet : IN STD_LOGIC;
-	Q : OUT STD_LOGIC
+	Q : BUFFER STD_LOGIC
 	);
 END COMPONENT;
 BEGIN
@@ -66,9 +66,9 @@ BEGIN
 t_prcs_nSet: PROCESS
 BEGIN
 	nSet <= '0';
-	WAIT FOR 30100 ps;
+	WAIT FOR 30000 ps;
 	nSet <= '1';
-	WAIT FOR 169420 ps;
+	WAIT FOR 170000 ps;
 	nSet <= '0';
 WAIT;
 END PROCESS t_prcs_nSet;
@@ -86,13 +86,25 @@ BEGIN
 WAIT;
 END PROCESS t_prcs_nRst;
 
+-- clk
+t_prcs_clk: PROCESS
+BEGIN
+LOOP
+	clk <= '0';
+	WAIT FOR 20000 ps;
+	clk <= '1';
+	WAIT FOR 20000 ps;
+	IF (NOW >= 1000000 ps) THEN WAIT; END IF;
+END LOOP;
+END PROCESS t_prcs_clk;
+
 -- D
 t_prcs_D: PROCESS
 BEGIN
 	D <= '0';
 	WAIT FOR 70000 ps;
 	D <= '1';
-	WAIT FOR 110000 ps;
+	WAIT FOR 120000 ps;
 	D <= '0';
 WAIT;
 END PROCESS t_prcs_D;

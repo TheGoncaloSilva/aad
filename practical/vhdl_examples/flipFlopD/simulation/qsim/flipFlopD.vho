@@ -1,4 +1,4 @@
--- Copyright (C) 2023  Intel Corporation. All rights reserved.
+-- Copyright (C) 2020  Intel Corporation. All rights reserved.
 -- Your use of Intel Corporation's design tools, logic functions 
 -- and other software and tools, and any partner logic 
 -- functions, and any output files from any of the foregoing 
@@ -15,16 +15,16 @@
 
 -- VENDOR "Altera"
 -- PROGRAM "Quartus Prime"
--- VERSION "Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition"
+-- VERSION "Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition"
 
--- DATE "10/16/2023 17:22:26"
+-- DATE "10/20/2023 22:17:48"
 
 -- 
 -- Device: Altera 5CGXFC7C7F23C8 Package FBGA484
 -- 
 
 -- 
--- This VHDL file should be used for Questa Intel FPGA (VHDL) only
+-- This VHDL file should be used for ModelSim-Altera (VHDL) only
 -- 
 
 LIBRARY ALTERA_LNSIM;
@@ -40,8 +40,8 @@ ENTITY 	flipFlopD IS
 	D : IN std_logic;
 	nSet : IN std_logic;
 	nRst : IN std_logic;
-	Q : OUT std_logic;
-	nQ : OUT std_logic
+	Q : BUFFER std_logic;
+	nQ : BUFFER std_logic
 	);
 END flipFlopD;
 

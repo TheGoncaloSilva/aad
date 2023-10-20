@@ -1,13 +1,13 @@
 /*<simulation_settings>
 <ftestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off flipFlopD -c flipFlopD --vector_source="/home/goncalo/repos/aad/practical/vhdl_examples/flipFlopD/flipFlopD.vwf" --testbench_file="/home/goncalo/repos/aad/practical/vhdl_examples/flipFlopD/simulation/qsim/flipFlopD.vwf.vht"</ftestbench_cmd>
-<ttestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off flipFlopD -c flipFlopD --vector_source="/home/goncalo/repos/aad/practical/vhdl_examples/flipFlopD/Waveform.vwf" --testbench_file="/home/goncalo/repos/aad/practical/vhdl_examples/flipFlopD/simulation/qsim/Waveform.vwf.vht"</ttestbench_cmd>
+<ttestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off flipFlopD -c flipFlopD --vector_source="/home/goncalo/repos/aad/practical/vhdl_examples/flipFlopD/flipFlopD.vwf" --testbench_file="/home/goncalo/repos/aad/practical/vhdl_examples/flipFlopD/simulation/qsim/flipFlopD.vwf.vht"</ttestbench_cmd>
 <fnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=on --flatten_buses=off --tool=modelsim_oem --format=vhdl --output_directory="/home/goncalo/repos/aad/practical/vhdl_examples/flipFlopD/simulation/qsim/" flipFlopD -c flipFlopD</fnetlist_cmd>
 <tnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=off --flatten_buses=off --timescale=1ps --tool=modelsim_oem --format=vhdl --output_directory="/home/goncalo/repos/aad/practical/vhdl_examples/flipFlopD/simulation/qsim/" flipFlopD -c flipFlopD</tnetlist_cmd>
 <modelsim_script>onerror {exit -code 1}
 vlib work
 vcom -work work flipFlopD.vho
 vcom -work work flipFlopD.vwf.vht
-vsim -novopt -c -t 1ps -L cyclonev -L altera -L altera_mf -L 220model -L sgate -L altera_lnsim work.flipFlopD_vhd_vec_tst
+vsim -c -t 1ps -L cyclonev -L altera -L altera_mf -L 220model -L sgate -L altera_lnsim work.flipFlopD_vhd_vec_tst
 vcd file -direction flipFlopD.msim.vcd
 vcd add -internal flipFlopD_vhd_vec_tst/*
 vcd add -internal flipFlopD_vhd_vec_tst/i1/*
@@ -20,11 +20,13 @@ proc simTimestamp {} {
 after 2500 simTimestamp
 run -all
 quit -f
+
+
 </modelsim_script>
 <modelsim_script_timing>onerror {exit -code 1}
 vlib work
 vcom -work work flipFlopD.vho
-vcom -work work Waveform.vwf.vht
+vcom -work work flipFlopD.vwf.vht
 vsim -novopt -c -t 1ps -sdfmax flipFlopD_vhd_vec_tst/i1=flipFlopD_vhd.sdo -L cyclonev -L altera -L altera_mf -L 220model -L sgate -L altera_lnsim work.flipFlopD_vhd_vec_tst
 vcd file -direction flipFlopD.msim.vcd
 vcd add -internal flipFlopD_vhd_vec_tst/*
@@ -38,6 +40,8 @@ proc simTimestamp {} {
 after 2500 simTimestamp
 run -all
 quit -f
+
+
 </modelsim_script_timing>
 <hdl_lang>vhdl</hdl_lang>
 </simulation_settings>*/
@@ -48,7 +52,7 @@ the Block Editor! File corruption is VERY likely to occur.
 */
 
 /*
-Copyright (C) 2023  Intel Corporation. All rights reserved.
+Copyright (C) 2020  Intel Corporation. All rights reserved.
 Your use of Intel Corporation's design tools, logic functions 
 and other software and tools, and any partner logic 
 functions, and any output files from any of the foregoing 
@@ -96,6 +100,16 @@ SIGNAL("nRst")
 	PARENT = "";
 }
 
+SIGNAL("clk")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "";
+}
+
 SIGNAL("D")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
@@ -131,9 +145,9 @@ TRANSITION_LIST("nSet")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 0 FOR 30.1;
-		LEVEL 1 FOR 169.42;
-		LEVEL 0 FOR 800.48;
+		LEVEL 0 FOR 30.0;
+		LEVEL 1 FOR 170.0;
+		LEVEL 0 FOR 800.0;
 	}
 }
 
@@ -149,14 +163,28 @@ TRANSITION_LIST("nRst")
 	}
 }
 
+TRANSITION_LIST("clk")
+{
+	NODE
+	{
+		REPEAT = 1;
+		NODE
+		{
+			REPEAT = 25;
+			LEVEL 0 FOR 20.0;
+			LEVEL 1 FOR 20.0;
+		}
+	}
+}
+
 TRANSITION_LIST("D")
 {
 	NODE
 	{
 		REPEAT = 1;
 		LEVEL 0 FOR 70.0;
-		LEVEL 1 FOR 110.0;
-		LEVEL 0 FOR 820.0;
+		LEVEL 1 FOR 120.0;
+		LEVEL 0 FOR 810.0;
 	}
 }
 
@@ -198,7 +226,7 @@ DISPLAY_LINE
 
 DISPLAY_LINE
 {
-	CHANNEL = "D";
+	CHANNEL = "clk";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 2;
@@ -207,7 +235,7 @@ DISPLAY_LINE
 
 DISPLAY_LINE
 {
-	CHANNEL = "Q";
+	CHANNEL = "D";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 3;
@@ -216,10 +244,19 @@ DISPLAY_LINE
 
 DISPLAY_LINE
 {
-	CHANNEL = "nQ";
+	CHANNEL = "Q";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 4;
+	TREE_LEVEL = 0;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "nQ";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 5;
 	TREE_LEVEL = 0;
 }
 
