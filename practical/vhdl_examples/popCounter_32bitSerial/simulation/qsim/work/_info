@@ -1,0 +1,107 @@
+m255
+K4
+z2
+!s11e vcom 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/goncalo/repos/aad/practical/vhdl_examples/popCounter_32bitSerial/simulation/qsim
+Epopcounter_32bitserial
+Z1 w1700088083
+Z2 DPx8 cyclonev 18 cyclonev_atom_pack 0 22 3HQPc5MVbmOPN?>a5EBYj2
+Z3 DPx8 cyclonev 19 cyclonev_components 0 22 jZ]H46BQLgIP5mfRTO`3B1
+Z4 DPx12 altera_lnsim 23 altera_lnsim_components 0 22 ^Ch;U@;bMk1;>A2B<UV`k2
+Z5 DPx4 ieee 16 vital_primitives 0 22 G>kiXP8Q9dRClKfK1Zn7j1
+Z6 DPx6 altera 11 dffeas_pack 0 22 dc5N=DKXMMTVYdUQ@D3FA2
+Z7 DPx4 ieee 12 vital_timing 0 22 J>EBealN09f8GzldA[z2>3
+Z8 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z9 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+Z10 DPx6 altera 28 altera_primitives_components 0 22 ca:ehlQAg4;_gVV:^8MAg3
+!i122 2
+R0
+Z11 8popCounter_32bitSerial.vho
+Z12 FpopCounter_32bitSerial.vho
+l0
+L39 1
+VTDki@7zG7^UYMgld6I?702
+!s100 M;fDiLhWWB[P:0`Cac@1D2
+Z13 OV;C;2020.1;71
+32
+Z14 !s110 1700088084
+!i10b 1
+Z15 !s108 1700088084.000000
+Z16 !s90 -work|work|popCounter_32bitSerial.vho|
+Z17 !s107 popCounter_32bitSerial.vho|
+!i113 1
+Z18 o-work work
+Z19 tExplicit 1 CvgOpt 0
+Astructure
+R2
+R3
+R4
+R5
+R6
+R7
+R8
+R9
+R10
+DEx4 work 22 popcounter_32bitserial 0 22 TDki@7zG7^UYMgld6I?702
+!i122 2
+l149
+L60 925
+VEDk4aU`m9VGQV_958Qi8D1
+!s100 V[In3zlD?G6[bLcD9nQ:R2
+R13
+32
+R14
+!i10b 1
+R15
+R16
+R17
+!i113 1
+R18
+R19
+Epopcounter_32bitserial_vhd_vec_tst
+Z20 w1700088082
+R8
+R9
+!i122 3
+R0
+Z21 8Waveform.vwf.vht
+Z22 FWaveform.vwf.vht
+l0
+L32 1
+VO^SbSoiC2=DjRE@A0_l0K1
+!s100 Zh4^OON]BklfHWVXfVL@I1
+R13
+32
+R14
+!i10b 1
+R15
+Z23 !s90 -work|work|Waveform.vwf.vht|
+Z24 !s107 Waveform.vwf.vht|
+!i113 1
+R18
+R19
+Apopcounter_32bitserial_arch
+R8
+R9
+Z25 DEx4 work 34 popcounter_32bitserial_vhd_vec_tst 0 22 O^SbSoiC2=DjRE@A0_l0K1
+!i122 3
+l49
+Z26 L34 73
+Z27 VbX_loK;lgCzZ6diJ4Q^cN2
+Z28 !s100 gI13QJCG:i3Dbh^6:;Lg]3
+R13
+32
+R14
+!i10b 1
+R15
+R23
+R24
+!i113 1
+R18
+R19
