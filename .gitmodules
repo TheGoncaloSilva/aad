@@ -1,0 +1,6 @@
+[submodule "projects/aad_proj_2"]
+	path = projects/aad_proj_2
+	url = git@github.com:TheGoncaloSilva/aad_proj_2.git
+[submodule "projects/aad_proj_1"]
+	path = projects/aad_proj_1
+	url = git@github.com:TheGoncaloSilva/aad_proj_1.git
